@@ -5,7 +5,9 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Testing\Concerns\MakesHttpRequests;
 use Illuminate\Notifications\Notifiable;
+use phpDocumentor\Reflection\DocBlock\Tags\Method;
 
 class User extends Authenticatable
 {
@@ -43,5 +45,9 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function employer() {
+        return $this->hasOne(Employer::class);
     }
 }
